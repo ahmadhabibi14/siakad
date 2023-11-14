@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% block head %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.tmp.css') }}">
+    <title>{% block title %}{% endblock %} - UTS PBO</title>
+  {% endblock %}
+</head>
+<body>
+  {% include "./partials/navbar.html" %}
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+  <div id="footer">
+    {% block footer %}
+      &copy; Copyright 2023 by <a href="https://habibi2004.pages.dev">Ahmad Habibi</a>.
+    {% endblock %}
+  </div>
+</body>
+</html>
