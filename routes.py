@@ -3,9 +3,22 @@ from database import Database
 
 app = Flask(__name__)
 # Web Views
-@app.route('/')
+@app.route('/', methods = ['GET'])
 def index():
-  return render_template('index.html')
+  dataMahasiswa = []
+  if request.method == 'GET':
+    try:
+      Db = Database()
+      dataMahasiswa = Db.queryMany("SELECT * FROM Mahasiswa")
+    except Exception as e:
+      dataMahasiswa = []
+      return render_template('index.html', daftar_mahasiswa=dataMahasiswa, error=str(e))
+    finally:
+      Db.connection.close()
+    return render_template('index.html', daftar_mahasiswa=dataMahasiswa)
+  else:
+    dataMahasiswa = []
+    return render_template('index.html', daftar_mahasiswa=dataMahasiswa, error=str(e))
 
 # API Routes
 @app.route('/api/daftar-mahasiswa', methods = ['POST'])

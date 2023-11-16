@@ -2,10 +2,10 @@ import mysql.connector
 import os
 
 config = {
-  "host": "localhost",
-  "user": "habibi",
-  "password": "habi123",
-  "db": "Akademik"
+  "host": os.getenv("MARIADB_HOST"),
+  "user": os.getenv("MARIADB_USER"),
+  "password": os.getenv("MARIADB_PASSWORD"),
+  "db": os.getenv("MARIADB_DATABASE"),
 }
 
 class Database:

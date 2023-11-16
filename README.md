@@ -26,4 +26,6 @@ export FLASK_APP=main
 export FLASK_ENV=development
 
 flask run -p 5001
+
+flask --app example_app.py --debug run
 ```
