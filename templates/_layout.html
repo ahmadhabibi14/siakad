@@ -4,19 +4,17 @@
   {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename= 'icons/favicon.svg') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/main.tmp.css') }}">
-    <title>{% block title %}{% endblock %} - UTS PBO</title>
+    <title>{% block title %}{% endblock %} - SISKA ILKOM</title>
   {% endblock %}
 </head>
 <body>
-  {% include "./partials/navbar.html" %}
-  <div id="content">
-    {% block content %}{% endblock %}
-  </div>
-  <div id="footer">
-    {% block footer %}
-      &copy; Copyright 2023 by <a href="https://habibi2004.pages.dev">Ahmad Habibi</a>.
-    {% endblock %}
-  </div>
+  <div class="w-full h-full flex flex-row">
+    {% include "./partials/sidemenu.html" %}
+    <div id="content" class="p-4">
+      {% block content %}{% endblock %}
+    </div>
+  <div>
 </body>
 </html>

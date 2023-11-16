@@ -19,6 +19,27 @@ def index():
   else:
     dataMahasiswa = []
     return render_template('index.html', daftar_mahasiswa=dataMahasiswa, error=str(e))
+  
+@app.route('/mahasiswa', methods = ['GET'])
+def mahasiswa():
+  dataMahasiswa = []
+  if request.method == 'GET':
+    try:
+      Db = Database()
+      dataMahasiswa = Db.queryMany("SELECT * FROM Mahasiswa")
+    except Exception as e:
+      dataMahasiswa = []
+      return render_template('mahasiswa.html', daftar_mahasiswa=dataMahasiswa, error=str(e))
+    finally:
+      Db.connection.close()
+    return render_template('mahasiswa.html', daftar_mahasiswa=dataMahasiswa)
+  else:
+    dataMahasiswa = []
+    return render_template('mahasiswa.html', daftar_mahasiswa=dataMahasiswa, error=str(e))
+  
+@app.errorhandler(404) 
+def not_found(e): 
+  return render_template("404.html") 
 
 # API Routes
 @app.route('/api/daftar-mahasiswa', methods = ['POST'])
