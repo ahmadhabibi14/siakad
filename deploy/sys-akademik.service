@@ -1,0 +1,14 @@
+[Unit]
+Description=Gunicorn instance to serve sys-akademik
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+Restart=on-failure
+WorkingDirectory=~/sys-akademik
+Environment="PATH=~/sys-akademik/myprojectenv/bin"
+ExecStart=~/sys-akademik/myprojectenv/bin/gunicorn --workers 3 --bind unix:sys-akademik.sock -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target

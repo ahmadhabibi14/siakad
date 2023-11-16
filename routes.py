@@ -39,6 +39,7 @@ def mahasiswa():
   
 @app.errorhandler(404) 
 def not_found(e): 
+  app.logger.error(f'Error {e} not found')
   return render_template("404.html") 
 
 # API Routes
@@ -59,3 +60,6 @@ def daftar_mahasiswa():
       return jsonify({'error': str(e)})
     finally:
       Db.connection.close()
+
+if __name__ == "__main__":
+  app.run(host='0.0.0.0')

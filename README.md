@@ -29,3 +29,8 @@ flask run -p 5001
 
 flask --app example_app.py --debug run
 ```
+
+### Start production
+```shell
+gunicorn --bind 0.0.0.0:5000 wsgi:app
+```

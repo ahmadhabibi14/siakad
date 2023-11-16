@@ -2,3 +2,4 @@ node_modules
 _tmpdb
 __pycache__
 static/css/main.tmp.css
+myprojectenv
