@@ -1,22 +1,27 @@
 {
-  "name": "uts-pbo",
-  "version": "1.0.0",
-  "description": "Ujian Tengah Semester - Pemrograman Berbasis Object (PBO)",
-  "main": "index.js",
+  "name": "siakad-fe",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun x tailwindcss -i ./static/css/main.css -o ./static/css/main.tmp.css --watch"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
+  "dependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.1.2"
+  },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.3",
-    "bun-types": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.2"
   }
 }
