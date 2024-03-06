@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  nim             Int       @unique
+  nama            String?
+  email           String    @unique
+  phoneNumber     String?
+  passwordHash    String
+  tahunMasuk        Int @db.Year
+  avatarFileName  String    @default("default.png")
+  role            UserRole  @default(MAHASISWA)
+}
+
+enum UserRole {
+  MAHASISWA
+  DOSEN
+  ADMIN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  UNKNOWN
+}
+
+model Fakultas {
+  id    Int    @id @default(autoincrement())
+  nama  String @unique
+  prodi ProgramStudi[]
+}
+
+model ProgramStudi {
+  id          Int       @id @default(autoincrement())
+  nama        String @unique
+  fakultasId  Int
+  fakultas    Fakultas @relation(fields: [fakultasId], references: [id])
+}
